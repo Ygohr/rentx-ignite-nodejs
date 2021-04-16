@@ -1,4 +1,4 @@
-import { AppError } from "@errors/appError";
+import { AppError } from "@shared/errors/appError";
 import { CategoriesRepositoryInMemory } from "@modules/cars/repositories/in-memory/CategoriesRepositoryInMemory";
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
@@ -44,7 +44,7 @@ describe("Create Category", () => {
       expect(result).not.toBeUndefined();
     } catch (error) {
       expect(error).toBeInstanceOf(AppError);
-      expect(error.message).toStrictEqual("Category already exists");
+      expect(error.message).toBe("Category already exists");
     }
   });
 });

@@ -1,6 +1,6 @@
-import { AppError } from "@errors/appError";
 import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
 import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
+import { AppError } from "@shared/errors/appError";
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
@@ -42,7 +42,7 @@ describe("Authenticate User", () => {
       expect(result).toBeUndefined();
     } catch (error) {
       expect(error).toBeInstanceOf(AppError);
-      expect(error.message).toStrictEqual("Email or password incorrect!");
+      expect(error.message).toBe("Email or password incorrect!");
       expect(error.statusCode).toBe(404);
     }
   });
@@ -65,7 +65,7 @@ describe("Authenticate User", () => {
       expect(result).toBeUndefined();
     } catch (error) {
       expect(error).toBeInstanceOf(AppError);
-      expect(error.message).toStrictEqual("Email or password incorrect!");
+      expect(error.message).toBe("Email or password incorrect!");
       expect(error.statusCode).toBe(404);
     }
   });
