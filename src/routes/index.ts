@@ -5,7 +5,7 @@ import { categoriesRoutes } from "./categories.routes";
 import { specificationsRoutes } from "./specifications.routes";
 import { usersRoutes } from "./users.routes";
 
-// router
+// router test
 const router = Router();
 
 router.use("/categories", categoriesRoutes);
