@@ -41,7 +41,7 @@ describe("Create Category", () => {
         name: category.name,
         description: category.description
       });
-      expect(result).not.toBeUndefined();
+      expect(result).toBeUndefined();
     } catch (error) {
       expect(error).toBeInstanceOf(AppError);
       expect(error.message).toBe("Category already exists");
