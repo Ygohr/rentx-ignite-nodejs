@@ -5,7 +5,10 @@ import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecifica
 import { UsersRepository } from "@modules/accounts/repositories/implementations/UsersRepository";
 import { CategoriesRepository } from "@modules/cars/repositories/implementations/CategoriesRepository";
 import { SpecificationsRepository } from "@modules/cars/repositories/implementations/SpecificationsRepository";
+import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
+import { CarsRepository } from "@modules/cars/repositories/implementations/CarsRepository";
 
 container.registerSingleton<ICategoriesRepository>("CategoriesRepository", CategoriesRepository);
 container.registerSingleton<ISpecificationsRepository>("SpecificationsRepository", SpecificationsRepository);
 container.registerSingleton<IUsersRepository>("UsersRepository", UsersRepository);
+container.registerSingleton<ICarsRepository>("CarsRepository", CarsRepository);
