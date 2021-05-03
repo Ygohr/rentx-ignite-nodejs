@@ -1,7 +1,7 @@
 import { v4 as uuidV4 } from "uuid";
 import { hash } from "bcrypt";
-import { AppError } from "@shared/errors/appError";
-import createConnection from "../../../database";
+import { AppError } from "../errors/appError";
+import createConnection from "../../database";
 
 async function create() {
   const connection = await createConnection("localhost");
