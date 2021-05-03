@@ -1,5 +1,6 @@
 import { v4 as uuidV4 } from "uuid";
 import { hash } from "bcrypt";
+import { AppError } from "@shared/errors/appError";
 import createConnection from "../../../database";
 
 async function create() {
@@ -13,7 +14,11 @@ async function create() {
     ('${id}', 'admin', 'admin@rentx.com.br', '${password}', true, 'now()', '')
   `);
 
-  connection.close();
+  await connection.close();
 }
 
-create().then(() => console.log("User admin created"));
+create()
+  .then(() => console.log("User admin created"))
+  .catch((error) => {
+    throw new AppError(`User admin create error: ${error}`);
+  });
