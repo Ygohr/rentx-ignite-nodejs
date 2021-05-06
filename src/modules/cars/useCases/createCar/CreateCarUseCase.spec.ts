@@ -1,14 +1,15 @@
+import { Car } from "@modules/cars/entities/Car";
 import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/CarsRepositoryInMemory";
 import { AppError } from "@shared/errors/appError";
 import { CreateCarUseCase } from "./CreateCarUseCase";
 
-let createCarUseCar: CreateCarUseCase;
+let createCarUseCase: CreateCarUseCase;
 let carsRepositoryInMemory: CarsRepositoryInMemory;
 
 describe("Create Car", () => {
   beforeEach(() => {
     carsRepositoryInMemory = new CarsRepositoryInMemory();
-    createCarUseCar = new CreateCarUseCase(carsRepositoryInMemory);
+    createCarUseCase = new CreateCarUseCase(carsRepositoryInMemory);
   });
 
   it("1) Should be able to create a new car", async () => {
@@ -22,8 +23,8 @@ describe("Create Car", () => {
       category_id: "07952f42-d62e-4336-8840-aad20a24031f"
     };
 
-    const result = await createCarUseCar.execute(car);
-    expect(result).toBeDefined();
+    const result = await createCarUseCase.execute(car);
+    expect(result).toBeInstanceOf(Car);
   });
 
   it("2) Should not be able to create a new car when it already exists", async () => {
@@ -48,8 +49,8 @@ describe("Create Car", () => {
         category_id: "07952f42-d62e-4336-8840-aad20a24031f"
       };
 
-      await createCarUseCar.execute(firstCar);
-      const result = await createCarUseCar.execute(secondCar);
+      await createCarUseCase.execute(firstCar);
+      const result = await createCarUseCase.execute(secondCar);
       expect(result).toBeUndefined();
     } catch (error) {
       expect(error).toBeInstanceOf(AppError);
@@ -68,7 +69,7 @@ describe("Create Car", () => {
       category_id: "07952f42-d62e-4336-8840-aad20a24031f"
     };
 
-    const createdCar = await createCarUseCar.execute(car);
+    const createdCar = await createCarUseCase.execute(car);
     expect(createdCar.available).toBeTruthy();
   });
 });
