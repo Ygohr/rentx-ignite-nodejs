@@ -19,6 +19,9 @@
         "prettier"
     ],
     "rules": {
+        "no-await-in-loop": "off",
+        "prefer-const": "off",
+        "no-restricted-syntax": "off",
         "no-undef": "off",
         "class-methods-use-this": "off",
         "no-shadow":"off",
