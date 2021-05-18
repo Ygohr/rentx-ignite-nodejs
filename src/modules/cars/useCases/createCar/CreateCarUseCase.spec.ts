@@ -24,6 +24,7 @@ describe("Create Car", () => {
     };
 
     const result = await createCarUseCase.execute(car);
+    expect(result).toBeDefined();
     expect(result).toBeInstanceOf(Car);
   });
 
