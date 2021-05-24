@@ -15,7 +15,6 @@ class RentalsRepository implements IRentalsRepository {
 
     rentalsQuery.andWhere("rental.car_id = :car_id", { car_id });
     const carWithOpenRental = await rentalsQuery.getOne();
-    console.log(carWithOpenRental);
 
     return carWithOpenRental;
   }
@@ -25,7 +24,6 @@ class RentalsRepository implements IRentalsRepository {
 
     rentalsQuery.andWhere("rental.user_id = :user_id", { user_id });
     const userWithOpenRental = await rentalsQuery.getOne();
-    console.log(userWithOpenRental);
     return userWithOpenRental;
   }
 
