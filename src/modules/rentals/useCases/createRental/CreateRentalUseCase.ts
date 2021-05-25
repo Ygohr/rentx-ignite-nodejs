@@ -20,6 +20,7 @@ class CreateRentalUseCase {
     @inject("CarsRepository")
     private carsRepository: ICarsRepository
   ) {}
+
   async execute({ user_id, car_id, expected_return_date }: IRequest): Promise<Rental> {
     const minRentalHours = 24;
     const carIsRented = await this.rentalsRepository.findOpenRentalByCarId(car_id);
@@ -32,16 +33,20 @@ class CreateRentalUseCase {
     if (userHasRental) {
       throw new AppError("There is a rental in progress for user!");
     }
+
     const hoursDiff = this.dateUtils.dateDiff(expected_return_date, DiffUnit.hour);
     if (hoursDiff < minRentalHours) {
       throw new AppError("Rental expected return date must be higher than 24 hours!");
     }
+
     const rental = await this.rentalsRepository.create({
       user_id,
       car_id,
       expected_return_date
     });
+
     await this.carsRepository.updateAvailableStatus(car_id, false);
+
     return rental;
   }
 }

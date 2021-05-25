@@ -1,5 +1,6 @@
 import { ICreateRentalDTO } from "@modules/rentals/dtos/ICreateRentalDTO";
 import { Rental } from "@modules/rentals/entities/Rental";
+import dayjs from "dayjs";
 import { getRepository, Repository } from "typeorm";
 import { IRentalsRepository } from "../IRentalsRepository";
 
@@ -24,6 +25,7 @@ class RentalsRepository implements IRentalsRepository {
 
     rentalsQuery.andWhere("rental.user_id = :user_id", { user_id });
     const userWithOpenRental = await rentalsQuery.getOne();
+
     return userWithOpenRental;
   }
 
@@ -37,6 +39,21 @@ class RentalsRepository implements IRentalsRepository {
     await this.repository.save(rental);
 
     return rental;
+  }
+
+  async findById(rental_id: string): Promise<Rental> {
+    const rental = await this.repository.findOne(rental_id);
+    return rental;
+  }
+
+  async update(rental_id: string, end_date: Date, total: number): Promise<void> {
+    const updated_at = dayjs().toDate();
+    await this.repository.createQueryBuilder().update(Rental).set({ end_date, total, updated_at }).where("id = :rental_id", { rental_id }).execute();
+  }
+
+  async findRentalsByUser(user_id: string): Promise<Rental[]> {
+    const rentals = this.repository.find({ where: { user_id }, relations: ["car"], order: { start_date: "ASC" } });
+    return rentals;
   }
 }
 
