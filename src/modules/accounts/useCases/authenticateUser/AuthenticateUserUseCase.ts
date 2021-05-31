@@ -3,6 +3,9 @@ import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { AppError } from "@shared/errors/appError";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+import { IUserTokensRepository } from "@modules/accounts/repositories/IUserTokensRepository";
+import { authItems } from "@config/auth";
+import { IDateUtils } from "@shared/lib/IDateUtils";
 
 interface IRequest {
   email: string;
@@ -15,16 +18,23 @@ interface IResponse {
     email: string;
   };
   token: string;
+  refresh_token: string;
 }
 
 @injectable()
 class AuthenticateUserUseCase {
   constructor(
     @inject("UsersRepository")
-    private usersRepository: IUsersRepository
+    private usersRepository: IUsersRepository,
+    @inject("UserTokensRepository")
+    private userTokensRepository: IUserTokensRepository,
+    @inject("DateUtils")
+    private dateUtils: IDateUtils
   ) {}
+
   async execute({ email, password }: IRequest): Promise<IResponse> {
     const user = await this.usersRepository.findByEmail(email);
+    const { secretRefreshToken, tokenExpiresIn, secretToken, refreshTokenExpiresIn, refreshTokenExpirationDays } = authItems;
 
     if (!user) {
       throw new AppError("Email or password incorrect!", 404);
@@ -36,9 +46,22 @@ class AuthenticateUserUseCase {
       throw new AppError("Email or password incorrect!", 404);
     }
 
-    const token = sign({}, "44f7e546e7154e04d7e9f13574be041c", {
+    const token = sign({}, secretToken, {
       subject: user.id,
-      expiresIn: "1d"
+      expiresIn: tokenExpiresIn
+    });
+
+    const refresh_token = sign({ email }, secretRefreshToken, {
+      subject: user.id,
+      expiresIn: refreshTokenExpiresIn
+    });
+
+    const refreshTokenExpirationDate = this.dateUtils.dateAdd(refreshTokenExpirationDays, "days");
+
+    await this.userTokensRepository.create({
+      user_id: user.id,
+      expiration_date: refreshTokenExpirationDate,
+      refresh_token
     });
 
     return {
@@ -46,7 +69,8 @@ class AuthenticateUserUseCase {
         name: user.name,
         email: user.email
       },
-      token
+      token,
+      refresh_token
     };
   }
 }

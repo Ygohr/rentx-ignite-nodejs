@@ -21,7 +21,7 @@ class UserTokens {
   expiration_date: Date;
 
   @CreateDateColumn()
-  crated_at: Date;
+  created_at: Date;
 
   constructor() {
     if (!this.id) {

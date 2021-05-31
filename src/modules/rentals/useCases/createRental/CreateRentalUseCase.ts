@@ -2,6 +2,7 @@ import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { Rental } from "@modules/rentals/entities/Rental";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { AppError } from "@shared/errors/appError";
+import { IDateUtils } from "@shared/lib/IDateUtils";
 import { DiffUnit } from "@shared/lib/implementations/DateUtils";
 import { inject, injectable } from "tsyringe";
 

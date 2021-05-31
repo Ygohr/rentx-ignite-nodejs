@@ -1,6 +1,6 @@
-import { Car } from "@modules/cars/entities/Car";
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { inject, injectable } from "tsyringe";
+import { Car } from "../../entities/Car";
 
 interface IRequest {
   category_id?: string;

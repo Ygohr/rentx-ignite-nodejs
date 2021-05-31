@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import { IDateUtils } from "../IDateUtils";
 
 dayjs.extend(utc);
 
@@ -27,6 +28,10 @@ class DateUtils implements IDateUtils {
 
   convertToUTC(date: Date): string {
     return dayjs(date).utc().local().format();
+  }
+
+  dateAdd(value: number, interval: dayjs.OpUnitType): Date {
+    return dayjs().add(value, interval).toDate();
   }
 }
 

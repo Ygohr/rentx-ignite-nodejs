@@ -1,6 +1,6 @@
-import { Car } from "@modules/cars/entities/Car";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+import { Car } from "../../cars/entities/Car";
 
 @Entity("rentals")
 class Rental {

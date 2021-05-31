@@ -20,5 +20,6 @@ async function create() {
 create()
   .then(() => console.log("User admin created"))
   .catch((error) => {
+    console.log(error);
     throw new AppError(`User admin create error: ${error}`);
   });

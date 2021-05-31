@@ -5,6 +5,7 @@ import { inject, injectable } from "tsyringe";
 import { DiffUnit } from "@shared/lib/implementations/DateUtils";
 import dayjs from "dayjs";
 import { Rental } from "@modules/rentals/entities/Rental";
+import { IDateUtils } from "@shared/lib/IDateUtils";
 
 @injectable()
 class DevolutionRentalUseCase {
