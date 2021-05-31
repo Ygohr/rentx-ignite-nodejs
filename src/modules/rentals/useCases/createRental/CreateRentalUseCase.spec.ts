@@ -74,37 +74,15 @@ describe("Create Rental", () => {
 
   it("3) Should not be able to create a new rental if user has a rental in progress", async () => {
     try {
-      const first_car = await carsRepositoryInMemory.create({
-        name: "Car test",
-        description: "Test",
-        daily_rate: 200,
-        license_plate: "ABC-7897",
-        fine_amount: 100,
-        brand: "Audi",
-        category_id: "1234",
-        id: "74e63460-6d01-45fa-8cfa-6f8bd2a2ed52"
-      });
-
-      const second_car = await carsRepositoryInMemory.create({
-        name: "Car test2",
-        description: "Test2",
-        daily_rate: 150,
-        license_plate: "ABC-4321",
-        fine_amount: 50,
-        brand: "GM",
-        category_id: "1234",
-        id: "e3eed0b1-f488-4d56-9530-0cb66b4a3704"
-      });
-
-      await createRentalUseCase.execute({
+      await rentalsRepositoryInMemory.create({
         user_id: "123",
-        car_id: first_car.id,
+        car_id: "789456",
         expected_return_date: datePlus48Hours
       });
 
       const second_rental = await createRentalUseCase.execute({
         user_id: "123",
-        car_id: second_car.id,
+        car_id: "456789",
         expected_return_date: datePlus48Hours
       });
       expect(second_rental).toBeUndefined();
