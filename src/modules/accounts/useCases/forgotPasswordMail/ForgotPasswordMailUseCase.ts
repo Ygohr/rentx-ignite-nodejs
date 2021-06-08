@@ -21,7 +21,7 @@ class ForgotPasswordMailUseCase {
     private userTokens: IUserTokensRepository,
     @inject("DateUtils")
     private dateUtils: IDateUtils,
-    @inject("EtherealMailSender")
+    @inject("MailSender")
     private mailSender: IMailSender
   ) {}
 

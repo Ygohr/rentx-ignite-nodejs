@@ -6,7 +6,7 @@ import { IMailTemplateVariables } from "@modules/accounts/useCases/forgotPasswor
 import { IMailSender } from "../IMailSender";
 
 @injectable()
-class EtherealMailSender implements IMailSender {
+class MailSender implements IMailSender {
   private client: Transporter;
   constructor() {
     nodemailer
@@ -43,4 +43,4 @@ class EtherealMailSender implements IMailSender {
   }
 }
 
-export { EtherealMailSender };
+export { MailSender };

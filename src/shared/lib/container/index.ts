@@ -2,7 +2,7 @@ import { container } from "tsyringe";
 import { IDateUtils } from "../IDateUtils";
 import { IMailSender } from "../IMailSender";
 import { DateUtils } from "../implementations/DateUtils";
-import { EtherealMailSender } from "../implementations/EtherealMailSender";
+import { MailSender } from "../implementations/MailSender";
 
 container.registerSingleton<IDateUtils>("DateUtils", DateUtils);
-container.registerInstance<IMailSender>("EtherealMailSender", new EtherealMailSender());
+container.registerInstance<IMailSender>("MailSender", new MailSender());
