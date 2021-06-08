@@ -6,7 +6,7 @@ import { app } from "../../../../app";
 import createConnection from "../../../../database";
 
 let connection: Connection;
-let token: string;
+let refresh_token: string;
 
 describe("List Categories Controller", () => {
   beforeAll(async () => {
@@ -26,7 +26,7 @@ describe("List Categories Controller", () => {
       email: "admin@rentx.com.br",
       password: "admin"
     });
-    token = responseToken.body.token;
+    refresh_token = responseToken.body.refresh_token;
   });
 
   afterAll(async () => {
@@ -42,7 +42,7 @@ describe("List Categories Controller", () => {
         description: "Category Test"
       })
       .set({
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${refresh_token}`
       });
 
     const response = await request(app).get("/categories");

@@ -23,6 +23,11 @@ class UsersRepositoryInMemory implements IUsersRepository {
   async findById(id: string): Promise<User> {
     return this.users.find((user) => user.id === id);
   }
+
+  async updatePassword(id: string, password: string): Promise<void> {
+    const userIndex = this.users.findIndex((user) => user.id === id);
+    this.users[userIndex].password = password;
+  }
 }
 
 export { UsersRepositoryInMemory };

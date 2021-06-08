@@ -6,7 +6,7 @@ import { app } from "../../../../app";
 import createConnection from "../../../../database";
 
 let connection: Connection;
-let token: string;
+let refresh_token: string;
 
 describe("Create Category Controller", () => {
   beforeAll(async () => {
@@ -30,7 +30,7 @@ describe("Create Category Controller", () => {
       email: "admin@rentx.com.br",
       password: "admin"
     });
-    token = responseToken.body.token;
+    refresh_token = responseToken.body.refresh_token;
   });
 
   afterAll(async () => {
@@ -46,7 +46,7 @@ describe("Create Category Controller", () => {
         description: "Category Test"
       })
       .set({
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${refresh_token}`
       });
 
     expect(response.status).toBe(201);
@@ -60,7 +60,7 @@ describe("Create Category Controller", () => {
         description: "Category Test"
       })
       .set({
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${refresh_token}`
       });
 
     expect(response.status).toBe(400);

@@ -40,8 +40,8 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
 
   async update(rental_id: string, end_date: Date, total: number): Promise<void> {
     const rentalIndex = this.rentals.findIndex((rental) => rental.id === rental_id);
-    this.rentals[rental_id].end_date = end_date;
-    this.rentals[rental_id].total = total;
+    this.rentals[rentalIndex].end_date = end_date;
+    this.rentals[rentalIndex].total = total;
   }
 
   async findRentalsByUser(user_id: string): Promise<Rental[]> {
