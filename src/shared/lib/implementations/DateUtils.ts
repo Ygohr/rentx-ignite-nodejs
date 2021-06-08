@@ -33,6 +33,10 @@ class DateUtils implements IDateUtils {
   dateAdd(value: number, interval: dayjs.OpUnitType): Date {
     return dayjs().add(value, interval).toDate();
   }
+
+  dateIsBefore(start_date: Date, end_date: Date): boolean {
+    return dayjs(start_date).isBefore(end_date);
+  }
 }
 
 export { DateUtils };

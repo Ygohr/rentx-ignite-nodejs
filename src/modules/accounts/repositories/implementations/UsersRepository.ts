@@ -23,6 +23,10 @@ class UsersRepository implements IUsersRepository {
     const user = await this.repository.findOne(id);
     return user;
   }
+
+  async updatePassword(id: string, password: string): Promise<void> {
+    await this.repository.createQueryBuilder().update(User).set({ password }).where("id = :id", { id }).execute();
+  }
 }
 
 export { UsersRepository };

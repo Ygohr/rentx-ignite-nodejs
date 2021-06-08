@@ -24,7 +24,7 @@ class RefreshTokenUseCase {
     const { email, sub } = verify(token, secretRefreshToken) as IPayload;
     const user_id = sub;
 
-    const userToken = await this.userTokensRepository.findRefreshToken(user_id, token);
+    const userToken = await this.userTokensRepository.findUserByRefreshToken(user_id, token);
 
     if (!userToken) {
       throw new AppError("Refresh token does not exists!");
