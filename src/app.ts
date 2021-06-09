@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import "express-async-errors";
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 import swaggerUi from "swagger-ui-express";
 import errorMiddleware from "@shared/middlewares/errorMiddleware";
 import { router } from "./routes";
