@@ -1,11 +1,11 @@
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { IUserTokensRepository } from "@modules/accounts/repositories/IUserTokensRepository";
 import { AppError } from "@shared/errors/appError";
-import { IDateUtils } from "@shared/lib/IDateUtils";
-import { IMailSender } from "@shared/lib/IMailSender";
 import { inject, injectable } from "tsyringe";
 import { v4 as uuidV4 } from "uuid";
 import { resolve } from "path";
+import { IDateUtils } from "@shared/lib/DateUtils/IDateUtils";
+import { IMailSender } from "@shared/lib/MailSender/IMailSender";
 
 export interface IMailTemplateVariables {
   name: string;

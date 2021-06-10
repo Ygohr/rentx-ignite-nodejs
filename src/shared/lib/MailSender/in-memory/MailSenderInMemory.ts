@@ -1,5 +1,5 @@
 import { IMailTemplateVariables } from "@modules/accounts/useCases/forgotPasswordMail/ForgotPasswordMailUseCase";
-import { IMailSender } from "@shared/lib/IMailSender";
+import { IMailSender } from "../IMailSender";
 
 class MailSenderInMemory implements IMailSender {
   private emails = [];

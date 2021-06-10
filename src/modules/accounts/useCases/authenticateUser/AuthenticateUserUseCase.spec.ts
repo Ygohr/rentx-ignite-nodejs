@@ -2,8 +2,8 @@ import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
 import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
 import { UserTokensRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UserTokensRepositoryInMemory";
 import { AppError } from "@shared/errors/appError";
-import { IDateUtils } from "@shared/lib/IDateUtils";
-import { DateUtils } from "@shared/lib/implementations/DateUtils";
+import { DateUtils } from "@shared/lib/DateUtils/DateUtils";
+import { IDateUtils } from "@shared/lib/DateUtils/IDateUtils";
 import { CreateUserUseCase } from "../createUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 

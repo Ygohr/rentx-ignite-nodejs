@@ -2,10 +2,10 @@ import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { AppError } from "@shared/errors/appError";
 import { inject, injectable } from "tsyringe";
-import { DiffUnit } from "@shared/lib/implementations/DateUtils";
 import dayjs from "dayjs";
 import { Rental } from "@modules/rentals/entities/Rental";
-import { IDateUtils } from "@shared/lib/IDateUtils";
+import { DiffUnit } from "@shared/lib/DateUtils/DateUtils";
+import { IDateUtils } from "@shared/lib/DateUtils/IDateUtils";
 
 @injectable()
 class DevolutionRentalUseCase {

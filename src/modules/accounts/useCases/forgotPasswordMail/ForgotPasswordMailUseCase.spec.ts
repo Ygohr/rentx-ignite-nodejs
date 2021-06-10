@@ -1,8 +1,8 @@
 import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
 import { UserTokensRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UserTokensRepositoryInMemory";
 import { AppError } from "@shared/errors/appError";
-import { DateUtils } from "@shared/lib/implementations/DateUtils";
-import { MailSenderInMemory } from "@shared/lib/implementations/in-memory/MailSenderInMemory";
+import { DateUtils } from "@shared/lib/DateUtils/DateUtils";
+import { MailSenderInMemory } from "@shared/lib/MailSender/in-memory/MailSenderInMemory";
 import { ForgotPasswordMailUseCase } from "./ForgotPasswordMailUseCase";
 
 let forgotPasswordMailUseCase: ForgotPasswordMailUseCase;

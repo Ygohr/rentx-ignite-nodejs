@@ -1,7 +1,7 @@
 import { authItems } from "@config/auth";
 import { IUserTokensRepository } from "@modules/accounts/repositories/IUserTokensRepository";
 import { AppError } from "@shared/errors/appError";
-import { IDateUtils } from "@shared/lib/IDateUtils";
+import { IDateUtils } from "@shared/lib/DateUtils/IDateUtils";
 import { sign, verify } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 

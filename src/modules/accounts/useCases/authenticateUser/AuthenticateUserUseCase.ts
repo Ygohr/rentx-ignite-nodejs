@@ -5,7 +5,7 @@ import { AppError } from "@shared/errors/appError";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { IUserTokensRepository } from "@modules/accounts/repositories/IUserTokensRepository";
 import { authItems } from "@config/auth";
-import { IDateUtils } from "@shared/lib/IDateUtils";
+import { IDateUtils } from "@shared/lib/DateUtils/IDateUtils";
 
 interface IRequest {
   email: string;

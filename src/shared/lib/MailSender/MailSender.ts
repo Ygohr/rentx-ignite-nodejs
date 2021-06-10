@@ -3,7 +3,7 @@ import nodemailer, { Transporter } from "nodemailer";
 import fs from "fs";
 import handleBars from "handlebars";
 import { IMailTemplateVariables } from "@modules/accounts/useCases/forgotPasswordMail/ForgotPasswordMailUseCase";
-import { IMailSender } from "../IMailSender";
+import { IMailSender } from "./IMailSender";
 
 @injectable()
 class MailSender implements IMailSender {

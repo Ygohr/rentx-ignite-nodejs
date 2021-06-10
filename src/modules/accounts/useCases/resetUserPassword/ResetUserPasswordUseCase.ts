@@ -1,7 +1,7 @@
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { IUserTokensRepository } from "@modules/accounts/repositories/IUserTokensRepository";
 import { AppError } from "@shared/errors/appError";
-import { IDateUtils } from "@shared/lib/IDateUtils";
+import { IDateUtils } from "@shared/lib/DateUtils/IDateUtils";
 import { hash } from "bcrypt";
 import dayjs from "dayjs";
 import { inject, injectable } from "tsyringe";

@@ -5,7 +5,7 @@ import { CreateUserController } from "@modules/accounts/useCases/createUser/Crea
 import { ensureAuthenticated } from "@shared/middlewares/ensureAuthenticated";
 import { UpdateUserAvatarController } from "@modules/accounts/useCases/updateUserAvatar/UpdateUserAvatarController";
 
-const uploadAvatar = multer(uploadConfig.upload("./tmp/avatar"));
+const uploadAvatar = multer(uploadConfig);
 const usersRoutes = Router();
 const createUserController = new CreateUserController();
 const updateUserAvatarController = new UpdateUserAvatarController();

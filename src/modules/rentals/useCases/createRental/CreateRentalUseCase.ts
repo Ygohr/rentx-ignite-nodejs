@@ -2,8 +2,8 @@ import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { Rental } from "@modules/rentals/entities/Rental";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import { AppError } from "@shared/errors/appError";
-import { IDateUtils } from "@shared/lib/IDateUtils";
-import { DiffUnit } from "@shared/lib/implementations/DateUtils";
+import { DiffUnit } from "@shared/lib/DateUtils/DateUtils";
+import { IDateUtils } from "@shared/lib/DateUtils/IDateUtils";
 import { inject, injectable } from "tsyringe";
 
 interface IRequest {

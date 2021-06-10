@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-import { IDateUtils } from "../IDateUtils";
+import { IDateUtils } from "./IDateUtils";
 
 dayjs.extend(utc);
 
