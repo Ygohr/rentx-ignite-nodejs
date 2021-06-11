@@ -5,7 +5,14 @@ import { IMailSender } from "../MailSender/IMailSender";
 import { MailSender } from "../MailSender/MailSender";
 import { IStorage } from "../Storage/IStorage";
 import { LocalStorage } from "../Storage/LocalStorage";
+import { S3Storage } from "../Storage/S3Storage";
 
 container.registerSingleton<IDateUtils>("DateUtils", DateUtils);
 container.registerInstance<IMailSender>("MailSender", new MailSender());
-container.registerSingleton<IStorage>("Storage", LocalStorage);
+
+const diskStorage = {
+  local: LocalStorage,
+  s3: S3Storage
+};
+
+container.registerSingleton<IStorage>("Storage", diskStorage[process.env.DISK]);
