@@ -8,7 +8,7 @@ interface IRequest {
   avatar_file: string;
 }
 
-enum FoldersName {
+export enum FoldersName {
   Avatar = "avatar",
   Cars = "cars"
 }

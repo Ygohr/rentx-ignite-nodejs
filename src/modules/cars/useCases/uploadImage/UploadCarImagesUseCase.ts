@@ -1,4 +1,6 @@
+import { FoldersName } from "@modules/accounts/useCases/updateUserAvatar/UpdateUserAvatarUseCase";
 import { ICarsImagesRepository } from "@modules/cars/repositories/ICarsImageRepository";
+import { IStorage } from "@shared/lib/Storage/IStorage";
 import { deleteFile } from "@utils/file";
 import { inject, injectable } from "tsyringe";
 
@@ -11,7 +13,9 @@ interface IRequest {
 class UploadCarImagesUseCase {
   constructor(
     @inject("CarsImagesRepository")
-    private carsImagesRepository: ICarsImagesRepository
+    private carsImagesRepository: ICarsImagesRepository,
+    @inject("Storage")
+    private storage: IStorage
   ) {}
   async execute({ car_id, images_name }: IRequest): Promise<void> {
     const carHasImages = await this.carsImagesRepository.findCarImagesById(car_id);
@@ -24,6 +28,7 @@ class UploadCarImagesUseCase {
 
     images_name.map(async (image) => {
       await this.carsImagesRepository.create(car_id, image);
+      await this.storage.save(image, FoldersName.Cars);
     });
   }
 }
