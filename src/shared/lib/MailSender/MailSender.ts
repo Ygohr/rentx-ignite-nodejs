@@ -11,14 +11,12 @@ class MailSender implements IMailSender {
   constructor() {
     nodemailer
       .createTestAccount()
-      .then((account) => {
+      .then(() => {
         const transporter = nodemailer.createTransport({
-          host: account.smtp.host,
-          port: account.smtp.port,
-          secure: account.smtp.secure,
+          service: process.env.MAIL_SERVICE,
           auth: {
-            user: account.user,
-            pass: account.pass
+            user: process.env.USER_GMAIL,
+            pass: process.env.PSSWD_GMAIL
           }
         });
 
@@ -33,7 +31,7 @@ class MailSender implements IMailSender {
 
     const message = await this.client.sendMail({
       to,
-      from: "Rentx <noreply@rentx.com.br>",
+      from: `Rentx <${process.env.USER_GMAIL}>`,
       subject,
       html: templateHTML
     });

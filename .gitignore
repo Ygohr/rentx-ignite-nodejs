@@ -3,3 +3,5 @@ node_modules
 yarn.lock
 .env
 coverage
+tmp/avatar/*
+tmp/cars/*

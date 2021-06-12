@@ -1,6 +1,5 @@
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { IStorage } from "@shared/lib/Storage/IStorage";
-import { deleteFile } from "@utils/file";
 import { inject, injectable } from "tsyringe";
 
 interface IRequest {

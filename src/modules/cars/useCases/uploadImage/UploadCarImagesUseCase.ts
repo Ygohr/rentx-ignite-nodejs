@@ -1,7 +1,6 @@
 import { FoldersName } from "@modules/accounts/useCases/updateUserAvatar/UpdateUserAvatarUseCase";
 import { ICarsImagesRepository } from "@modules/cars/repositories/ICarsImageRepository";
 import { IStorage } from "@shared/lib/Storage/IStorage";
-import { deleteFile } from "@utils/file";
 import { inject, injectable } from "tsyringe";
 
 interface IRequest {
@@ -22,7 +21,7 @@ class UploadCarImagesUseCase {
 
     if (carHasImages.images.length > 0) {
       for (let image of carHasImages.images) {
-        await deleteFile(`./tmp/cars/${image}`);
+        await this.storage.delete(image, FoldersName.Cars);
       }
     }
 
