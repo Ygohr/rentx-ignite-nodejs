@@ -6,3 +6,4 @@ coverage
 tmp/avatar/*
 tmp/cars/*
 dist
+ormconfig.json
