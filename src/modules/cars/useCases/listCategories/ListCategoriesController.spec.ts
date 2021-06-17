@@ -6,7 +6,7 @@ import { app } from "../../../../app";
 import createConnection from "../../../../database";
 
 let connection: Connection;
-let refresh_token: string;
+let token: string;
 
 describe("List Categories Controller", () => {
   beforeAll(async () => {
@@ -26,7 +26,7 @@ describe("List Categories Controller", () => {
       email: "admin@rentx.com.br",
       password: "admin"
     });
-    refresh_token = responseToken.body.refresh_token;
+    token = responseToken.body.token;
   });
 
   afterAll(async () => {
@@ -34,15 +34,15 @@ describe("List Categories Controller", () => {
     await connection.close();
   });
 
-  it("1) Shoul GET /categories and get statusCode 200 when listing all categories", async () => {
+  it("1) Should GET /categories and get statusCode 200 when listing all categories", async () => {
     await request(app)
       .post("/categories")
       .send({
-        name: "Category Test",
-        description: "Category Test"
+        name: `Category test ${Math.ceil(Math.random() * (100 - 1) + 1)}`,
+        description: `Category test ${Math.ceil(Math.random() * (100 - 1) + 1)}`
       })
       .set({
-        Authorization: `Bearer ${refresh_token}`
+        Authorization: `Bearer ${token}`
       });
 
     const response = await request(app).get("/categories");

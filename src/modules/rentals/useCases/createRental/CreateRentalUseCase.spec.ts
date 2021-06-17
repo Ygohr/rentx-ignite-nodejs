@@ -2,7 +2,7 @@ import { CarsRepositoryInMemory } from "@modules/cars/repositories/in-memory/Car
 import { Rental } from "@modules/rentals/entities/Rental";
 import { RentalsRepositoryInMemory } from "@modules/rentals/repositories/in-memory/RentalsRepositoryInMemory";
 import { AppError } from "@shared/errors/appError";
-import { DateUtils } from "@shared/lib/implementations/DateUtils";
+import { DateUtils } from "@shared/lib/DateUtils/DateUtils";
 import dayjs from "dayjs";
 import { CreateRentalUseCase } from "./CreateRentalUseCase";
 
