@@ -1,10 +1,14 @@
 # ⚔️ Ignite - RentX
-![](assets/capa_ignite.png)
+<p align="center">
+  <img src=assets/capa_ignite.png>
+</p>
 <br>
+<p align="center">
+  <img src=assets/rentx_logo.png>
+</p>
 
 ## :pushpin: About
-![](assets/rentx_logo.png)
-Essa API foi construída com **NodeJS** + **Typescript** como uma empresa fictícia de **aluguel de carros** chamada **RentX** durante o curso Ignite de NodeJS da [**Rocketseat**](https://github.com/Rocketseat).
+Essa API foi construída com **NodeJS** + **Typescript** como uma empresa fictícia de **aluguel de carros** chamada **RentX** durante o curso **Ignite de NodeJS** da [**Rocketseat**](https://github.com/Rocketseat).
 A aplicação possui as seguintes funcionalidades:
 - Cadastro de usuários
 - Autenticação de usuários e geração de token
