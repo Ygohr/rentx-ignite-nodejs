@@ -3,7 +3,7 @@ node_modules
 yarn.lock
 .env
 coverage
-!tmp/cars
-!tmp/avatar
+tmp/*
 dist
 ormconfig.json
+!tmp/.gitkeep
