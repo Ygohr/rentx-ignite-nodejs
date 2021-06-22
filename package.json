@@ -47,6 +47,8 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
+    "@sentry/node": "^6.7.2",
+    "@sentry/tracing": "^6.7.2",
     "@types/cors": "^2.8.10",
     "@types/redis": "^2.8.29",
     "aws-sdk": "^2.925.0",
