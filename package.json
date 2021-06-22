@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@types/cors": "^2.8.10",
+    "@types/redis": "^2.8.29",
     "aws-sdk": "^2.925.0",
     "bcrypt": "^5.0.1",
     "class-transformer": "^0.4.0",
@@ -63,6 +64,8 @@
     "multer": "^1.4.2",
     "nodemailer": "^6.6.1",
     "pg": "^8.5.1",
+    "rate-limiter-flexible": "^2.2.2",
+    "redis": "^3.1.2",
     "reflect-metadata": "^0.1.13",
     "swagger-ui-express": "^4.1.6",
     "ts-node-dev": "^1.1.6",

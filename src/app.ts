@@ -4,6 +4,7 @@ import "express-async-errors";
 import express from "express";
 import swaggerUi from "swagger-ui-express";
 import errorMiddleware from "@shared/middlewares/errorMiddleware";
+import rateLimiter from "@shared/middlewares/rateLimiter";
 import upload from "@config/upload";
 import cors from "cors";
 import { router } from "./routes";
@@ -13,6 +14,8 @@ import "./shared/container";
 
 createConnection();
 const app = express();
+
+app.use(rateLimiter);
 
 app.use(express.json());
 
